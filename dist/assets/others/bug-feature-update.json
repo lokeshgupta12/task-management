@@ -1,18 +1,10 @@
 [
   {
-    "id": 1525331163991,
-    "component": "Awaii",
-    "description": "",
-    "typeId": 1,
-    "type": "bug",
-    "status": "Not yet started"
-  },
-  {
-    "component": "Add authentication",
+    "component": "Add authentication using JWT",
     "description": "Dubai POC",
     "typeId": 2,
+    "status": "Done",
     "type": "feature",
-    "status": "Pending",
     "id": 1525268449339
   },
   {
