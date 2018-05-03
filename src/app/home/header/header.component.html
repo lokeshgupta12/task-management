@@ -1,0 +1,17 @@
+<header class="main-header">
+  <nav class="navbigation">
+    <div class="profile">
+        <a class="profilelink" (click)="open = !open">
+            <img src="./assets/images/user.jpg" class="user-image">
+            <span class="user-name">{{'agrawal.lovelesh@gmail.com'}}</span>
+        </a>
+        <ul class="dropdown-menu" [ngClass]="open ? 'd-block' : 'd-none'" >
+            <li>
+                <a routerLink="/login" (click)="logout()">
+                    <i class="fa fa-sign-out"></i>Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+</header>
