@@ -3,7 +3,7 @@ var fs = require('fs');
 // Use to validate given schema
 var Validator = require('common-schema-validation');
 // Path of task json file
-const TASK_FILE = 'src/assets/others/bug-feature-update.json';
+const TASK_FILE = 'dist/assets/others/bug-feature-update.json';
 var router = express.Router();
 
 // Tash Schmea

@@ -6,7 +6,7 @@ var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var Validator = require('common-schema-validation');
 var router = express.Router();
 // Path of user json file
-const USER_FILE = 'src/assets/others/user.json';
+const USER_FILE = 'dist/assets/others/user.json';
 // Login user schmea
 var userLogin = {
     email: {
