@@ -1,40 +1,59 @@
-## 1.Install Dependency
+# Task Management
+
+> See running application [here](https://nameless-mountain-69985.herokuapp.com)
+
+Task management is used to managing task like creation, deleteion and updation.
+  - Show all task lists
+  - Able to add, delete and update task
+  - Able to search, sort.
+  - A lot of task data can be manage by pagination
+  
+> The goal of this project to create CRUD forms using dynamic list and dynamic form in the minimum time(0.5Hr).
+ #### Dynamic list is used to provide functionality of 
+ - Sorting
+ - Searching
+ - Pagination(page size, page size options , show first and last button),
+ - Adding
+ - Deleting(Confirmation dialog on delete)
+ - Selecting record
+ - With fixed no. of columns and with their title
+ - Show loading spinner
+ - Footer
+ - Editing the records with static and dynamic data both.
+#### Dynamic form is used to create dynamic form with a simple config file and provide below features
+ - Field type
+ - Validations(required, min, max)
+ - Submit button
+ - Column space
+ - Field value, placeholder, label
+ - Other options
+
+### Tech
+
+Dillinger uses a number of open source projects to work properly:
+
+* [Angular 5] - HTML enhanced for web apps!
+* [Angular Material] - Awesome UI components
+* [node.js] - evented I/O for the backend
+* [Express] - fast node.js network app framework
+
+### Installation
+Take clone from
 ```
-npm install
+https://github.com/alovelesh/task-management.git
 ```
-## 2.Setup(Interactively setup basic website and necessary database configurations.)
+Install the dependencies and devDependencies and start the server.
+
 ```
-node init.js
+$ cd task-management
+$ npm install
+$ node server
+Open localhost:3000
 ```
-## 3.Create DB Schema
-```
-node ./create_db_schema/createDB.js
-```
 
-# MyApp
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[//]: #
+   [Angular Material]: <https://material.angular.io>
+   [Angular 5]: <https://angular.io>
+   [node.js]: <http://nodejs.org>
+   [express]: <http://expressjs.com>
+   [AngularJS]: <http://angularjs.org>
