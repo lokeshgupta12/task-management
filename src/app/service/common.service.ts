@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-
+// Mat Snack Bar default configuration
 const snackBarDefaultConfig = {
 	message : "xxxxxxxxxxxx",
 	action : "close",
@@ -30,6 +30,8 @@ export class CommonService {
     }
     // Check Server response error
     checkError = (err) => {
+        // If server response is 401(unauthorized) then redirect to login page 
+        // also remove auth-token from localstorage
     	if (this.isObject(err) && (err.status === 401)) {
     		localStorage.removeItem('auth-token');
     		this.router.navigate(['/login']);

@@ -29,4 +29,4 @@ const port = process.env.PORT || '3000';
 // Set port for application
 app.set('port', port);
 // Listen on provided port, on all network interfaces.
-app.listen(port, () => console.log(`API running on localhost:${port}`));
+app.listen(port, () => console.log(`API running on ${port}`));

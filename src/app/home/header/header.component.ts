@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+	// Remove auth-token from local storage
 	logout() {
 		localStorage.removeItem('auth-token');
 	}	

@@ -33,9 +33,7 @@ export class TaskManagementFormComponent implements AfterViewInit {
   ngAfterViewInit() {
       this.form.patchValue(this.data);
       this.cdr.detectChanges();
-    // setTimeout(()=>{
-    // },0)
   }
-  //isFooterRow = (_, rowData) => rowData.isFooterRow;
+  
   submit = (val) => this.dialogRef.close(Object.assign(this.data,val));
 }

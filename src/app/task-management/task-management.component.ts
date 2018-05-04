@@ -19,7 +19,7 @@ const typeObj = {
 })
 export class TaskManagementComponent {
   @ViewChild(ListComponent) listComponent;
-
+  // List Copmonent config
   dataSource : {}[] = [];
   listConfig : ListConfig = {
     columns : [
@@ -52,12 +52,14 @@ export class TaskManagementComponent {
   }
 
   ngOnInit() {
+    // Get task list data
     this.http.get('/taskmanagement/list').subscribe((data : {}[])=>{
         this.dataSource = data;
     },err=> this.commonService.checkError(err))
   }
 
   add(data?) {
+    // Open dialog on add and edit event
     const dialogRef = this.dialog.open(TaskManagementFormComponent,{
       disableClose : true,
       autoFocus: true,
@@ -67,13 +69,17 @@ export class TaskManagementComponent {
         title : data ? 'Update task' : 'Add task'
       }
     });
+    // On close dialog
     dialogRef.afterClosed().subscribe(
       val => {
         if (this.commonService.isObject(val)) {
           val.type = typeObj[val.typeId];
           val.typeId = +val.typeId;
+          // Call api to save task data
           this.http.post('/taskmanagement/save',val).subscribe(({message, data}:any)=>{
+            // Update datasource
             this.dataSource = data;
+            // Show success notification
             this.commonService.showNotification({
                 message,
                 type : 'success'
@@ -83,17 +89,19 @@ export class TaskManagementComponent {
       }
     );
   }
-
+  // On delete of task
   delete({id}) {
     this.http.delete('/taskmanagement/delete/'+id).subscribe(({message, data}:any)=>{
+      // Update datasource
       this.dataSource = data;
+      // Show success notification
       this.commonService.showNotification({
           message,
           type : 'success'
       })
     }, err=> this.commonService.checkError(err))
   }
-
+  // On initialization of list component
   onInitializeList(event) {
     switch (event.eventName) {
       case "add":

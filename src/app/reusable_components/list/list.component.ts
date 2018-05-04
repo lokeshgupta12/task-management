@@ -18,15 +18,17 @@ import { ListConfig } from './list.model';
 })
 
 export class ListComponent implements OnInit, AfterViewInit {
-  
+  // Column which are displayed in list
   displayedColumns : Array<string> = [];
+  // List datasource
   dataSource = new MatTableDataSource();
+  // Set loading div false
   loading : boolean = false;
-
+  // Bind searchInput, MatSort, MatPaginator
   @ViewChild('searchInput') searchInput : ElementRef;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
+  // Get Property and event fromparent
   @Input() config : ListConfig;
   @Input('dataSource') ds = [];
   @Input() totalCount;
@@ -46,10 +48,16 @@ export class ListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnChanges() {
+    // After updating input hide loading division
     this.loading = false;
+    // If server interaction(Means Searching, Sorting, Pagination applied on server end)
+    //  is true and footer is also available then push footer into dataSource
     this.config.serverInteraction && this.config.footer && this.ds.push(Object.assign(this.config.footer.row,{isFooterRow : true}));
-  	this.dataSource = new MatTableDataSource(this.ds);
+  	// Convert input datasorce into Mat table data source
+    this.dataSource = new MatTableDataSource(this.ds);
+    // If server interaction is false then bind Mat sorting and pagination with datasource
     if(!this.config.serverInteraction) {
+      // If paginator is true and no record exist in current pageindex then decrese the pageindex
       if (this.paginator && this.dataSource.data.length <= this.paginator.pageIndex * this.paginator.pageSize && this.paginator.pageIndex)
         this.paginator.pageIndex-=1;
       this.dataSource.paginator = this.paginator;
@@ -82,20 +90,26 @@ export class ListComponent implements OnInit, AfterViewInit {
         )
         .subscribe();
     } else {
+      // If server interaction is false then bind Mat sorting and pagination with datasource
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }
+    // Call callback with 'initialized' event name
     this.initialized.next({eventName : 'initialized'});
   }
-
+  // Pass filter object to parent
   private passFilterToParent() {
     let obj : any = {};
+    // If pageable is true set offset and limit
     if (this.config.pageable) {
       obj.offset = this.paginator.pageIndex*this.paginator.pageSize;
       obj.limit = this.paginator.pageSize;
     }
+    // If filterable is true set searchValue
     this.config.filterable && (obj.searchValue = this.searchInput.nativeElement.value.trim());
+    // If sortable is true set sort object
     this.config.sortable && this.sort.active && (obj.sort = { field : this.sort.active, dir : this.sort.direction});
+    // Call callback and pass data with 'filterUpdate' event name
     this.initialized.next({
       eventName : 'filterUpdate',
       data : obj
@@ -105,12 +119,15 @@ export class ListComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.displayedColumns = [];
+    // Collect display column from config.columns in which notToDisplay flag is false
     for(let ob of this.config.columns)
       ob.notToDisplay || this.displayedColumns.push(ob.field);
+    // Check if config.actions is defined then push action column too.
     this.commonService.isObject(this.config.actions) && this.displayedColumns.push("action");
   }
-
+  // Call on delete
   onDelete(row) {
+    // config.showPopupOnDelete is true open confirmation popup
     if (this.config.showPopupOnDelete) {
       const dialogRef = this.dialog.open(NgMatDialogComponent,{
         disableClose : true,
@@ -123,9 +140,11 @@ export class ListComponent implements OnInit, AfterViewInit {
         val => this.commonService.isObject(val) && val.ok && this.initialized.next({eventName : 'delete', data : row})
         );
     }
+    // If config.showPopupOnDelete is false then
+    // Call callback and pass data with 'delete' event name
     else 
       this.initialized.next({eventName : 'delete', data : row});
   }
-
+  // If parent want to update grid with update datasource forcefully
   onDataSourceUpdate = () => this.ngOnChanges();
 }

@@ -1,9 +1,9 @@
 export class ListConfig {
-	//[config]:ListConfig
 	//[dataSource] : object[];
 	//[totalCount] ?: number // Provide Only in case of serverInteraction is true
 	//(initialized) ?: Function
 	//(onSelect) ?: Function
+	//[config]:ListConfig
 	columns : {
 		field : string,
 		title ?: string, //(titlecase the field)

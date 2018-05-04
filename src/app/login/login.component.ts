@@ -21,15 +21,22 @@ export class LoginComponent{
         private http : HttpClient,
         private commonService : CommonService
         ) { }
-
+    // Call on login click
     login() {
+        // Set loading true
         this.loading = true;
+        // Hit login api
         this.http.post('/usermanagement/login',this.loginForm.value).subscribe((data: any)=>{
+            // Set loading false
             this.loading = false;
+            // Store auth-token in localstorage
             localStorage['auth-token'] = data.token;
+            // Navigate to home page
             this.router.navigate(['']);
           },data => {
+            // Set loading false
             this.loading = false;
+            // Show error notification
             this.commonService.showNotification({
                 message : data.error && data.error.message,
                 type : 'error'

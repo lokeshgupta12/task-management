@@ -32,16 +32,7 @@ const CONFIG : FieldConfig[] = [
       options: ['Not yet started', 'Done', 'Pending', 'In progress'],
       placeholder: '-select status-',
       validation: [Validators.required]
-    },/*{
-      type: 'input',
-      inputType: 'radio',
-      colSize : 12,
-      label: 'Gender',
-      value : 'm',
-      name: 'gender',
-      options: [{value : 'm',name : 'Male'},{value : 'f',name : 'Female'}],
-      validation: [Validators.required]
-    },*/{
+    },{
       name: 'Submit',
       type: 'button',
       colSize : 6,
