@@ -2,6 +2,13 @@
 
 > See running application [here](https://nameless-mountain-69985.herokuapp.com)
 
+#### List of all users
+
+| Email | Password |
+| ------ | ------ |
+| alovelesh@gmail.com | 123456 |
+| agrawal.lovelesh@gmail.com | 123456 |
+
 Task management is used to managing task like creation, deleteion and updation.
   - Show all task lists
   - Able to add, delete and update task
@@ -20,7 +27,7 @@ Task management is used to managing task like creation, deleteion and updation.
  - Show loading spinner
  - Footer
  - Editing the records with static and dynamic data both.
-#### Dynamic form is used to create dynamic form with a simple config file and provide below features
+#### Dynamic form is used to create form with a simple config file and provide below features
  - Field type
  - Validations(required, min, max)
  - Submit button
@@ -40,7 +47,7 @@ Dillinger uses a number of open source projects to work properly:
 ### Installation
 Take clone from
 ```
-https://github.com/alovelesh/task-management.git
+$ git clone https://github.com/alovelesh/task-management.git
 ```
 Install the dependencies and devDependencies and start the server.
 
