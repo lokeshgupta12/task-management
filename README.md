@@ -37,7 +37,7 @@ Task management is used to managing task like creation, deleteion and updation.
 
 ### Tech
 
-Dillinger uses a number of open source projects to work properly:
+This project uses a number of open source projects to work properly:
 
 * [Angular 5] - HTML enhanced for web apps!
 * [Angular Material] - Awesome UI components
@@ -55,7 +55,7 @@ Install the dependencies and devDependencies and start the server.
 $ cd task-management
 $ npm install
 $ node server
-Open localhost:3000
+Open http://localhost:3000 in browser
 ```
 
 [//]: #
